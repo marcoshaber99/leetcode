@@ -13,18 +13,21 @@ class Solution:
             return None
         if len(lists) == 1:
             return lists[0]
+
+        while len(lists) > 1:
+            mergedLists = []
+
+            for i in range(0, len(lists), 2):
+                l1 = lists[i]
+                l2 = lists[i+1] if (i+1) < len(lists) else None
+                mergedLists.append(self.mergeTwoLists(l1, l2))
+            lists = mergedLists
+        return lists[0]
         
-        # Recursive Split
-        mid = len(lists) // 2
-        left = self.mergeKLists(lists[:mid])
-        right = self.mergeKLists(lists[mid:])
-        
-        # Merge Halves
-        return self.mergeTwoLists(left, right)
 
     # Helper Function
-    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = ListNode(0)
+    def mergeTwoLists(self, l1, l2):
+        dummy = ListNode()
         current = dummy
         
         while l1 and l2:
@@ -36,5 +39,9 @@ class Solution:
                 l2 = l2.next
             current = current.next
         
-        current.next = l1 or l2
+        if l1:
+            current.next = l1
+        if l2:
+            current.next = l2
+
         return dummy.next
