@@ -14,8 +14,8 @@ class Solution:
         if len(lists) == 1:
             return lists[0]
 
-        while len(lists) > 1:
-            mergedLists = []
+        while len(lists) > 1: 
+            mergedLists = [] # store the merged linked lists at each iteration.
 
             for i in range(0, len(lists), 2):
                 l1 = lists[i]
