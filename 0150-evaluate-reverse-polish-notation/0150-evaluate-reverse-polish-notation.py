@@ -15,7 +15,7 @@ class Solution:
             elif c == "/":
                 oper1 = stack.pop()
                 oper2 = stack.pop()
-                stack.append(int(oper2 / oper1))
+                stack.append(int(float(oper2) / oper1))
 
             elif c == "*":
                 oper1 = stack.pop()
