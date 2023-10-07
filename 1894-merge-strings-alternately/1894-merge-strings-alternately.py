@@ -1,8 +1,7 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        merged =[]
-        i=0
-        j=0
+        i,j=0,0
+        merged=[]
 
         while i < len(word1) and j < len(word2):
             merged.append(word1[i])
